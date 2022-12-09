@@ -1,5 +1,7 @@
 "use client";
-import React, { FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
+import { v4 as uuid } from "uuid";
+import { Message } from "../typings";
 
 function ChatInput() {
   const [input, setInput] = useState("");
@@ -12,11 +14,39 @@ function ChatInput() {
     const messageToSend = input;
 
     setInput("");
+
+    const id = uuid();
+
+    const message: Message = {
+      id,
+      message: messageToSend,
+      created_at: Date.now(),
+      username: "profile username",
+      profile_pic:
+        "https://scontent.fsvg2-1.fna.fbcdn.net/v/t1.30497-1/84628273_176159830277856_972693363922829312_n.jpg?stp=c15.0.50.50a_cp0_dst-jpg_p50x50&_nc_cat=1&ccb=1-7&_nc_sid=12b3be&_nc_ohc=mRLu-PfuC3wAX9srkS8&_nc_ht=scontent.fsvg2-1.fna&edm=AP4hL3IEAAAA&oh=00_AfCXMXI7kDKqGDbXdxESv_lFIFdv7d77amYJJ3rdMS3IUg&oe=63BB32D9",
+      email: "example@exampleemail.com",
+    };
+
+    const uploadMessageToUpstash = async () => {
+      const res = await fetch("/api/addMessage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message }),
+      });
+
+      const data = await res.json();
+
+      console.log("message added:", data);
+    };
+
+    uploadMessageToUpstash();
   };
 
   return (
     <form
-      onSubmit={(e) => addMessage}
+      onSubmit={(e) => addMessage(e)}
       className="fixed bottom-0 z-50 w-full flex px-10 py-5 space-x-2 border-t border-gray-100"
     >
       <input
@@ -24,8 +54,7 @@ function ChatInput() {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Enter your msg here..."
-        className="flex-1 rounded border bor
-        der-gray-300 focus:outline-none focus:ring-2 focus:ring-lime-600 focus:border-transparent px-5 py-3 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex-1 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-lime-600 focus:border-transparent px-5 py-3 disabled:opacity-50 disabled:cursor-not-allowed"
       />
       <button
         type="submit"
