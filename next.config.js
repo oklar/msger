@@ -5,6 +5,6 @@ module.exports = {
     appDir: true,
   },
   images: {
-    domains: ["scontent.fsvg2-1.fna.fbcdn.net"],
+    domains: ["scontent.fsvg2-1.fna.fbcdn.net", "plaform-lookaside.fbsbx.com"],
   },
 };
