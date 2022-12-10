@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { serverPusher } from "../../pusher";
 import redis from "../../redis";
 import { Message } from "../../typings";
 
@@ -27,6 +28,7 @@ export default async function handler(
   };
 
   await redis.hset("messages", message.id, JSON.stringify(newMessage));
+  serverPusher.trigger("messages", "new-messages", newMessage);
 
   res.status(200).json({ message: newMessage });
 }
