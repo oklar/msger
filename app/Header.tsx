@@ -1,21 +1,29 @@
+import { Session } from "inspector";
+import { unstable_getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import LogoutButton from "./LogoutButton";
 
-function Header() {
-  const session = true;
+type Props = {
+  session: any;
+};
 
+function Header({ session }: Props) {
   if (session)
     return (
       <header className="sticky top-0 z-50 bg-white flex justify-between items-center p-10 showdow-sm">
         <div className="flex space-x-2">
-          <div className="text-4xl rounded-full border-x-2 border-y-2 text-center align-middle bg-lime-400">
-            🙋🏼
-          </div>
+          <Image
+            className="rounded-full mx-2 object-contain"
+            height={10}
+            width={50}
+            src={session.user?.image!}
+            alt="Profile Picture"
+          />
           <div>
-            <p className="text-lime-400">Loggeed in as:</p>
-            <p className="font-bold text-lg">Profile Name</p>
+            <p className="text-lime-400">Logged in as:</p>
+            <p className="font-bold text-lg">{session.user?.name}</p>
           </div>
         </div>
 
