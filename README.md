@@ -1,10 +1,17 @@
 ✅ next js 13
+
 ✅ tailwind css
+
 ✅ upstash for serverless redis db
+
 ✅ pusher to enable realtime messages with several clients
+
 ✅ next auth w/ facebook login
+
 ✅ typescript
+
 ✅ nextjs server & client components
+
 ✅ data fetching hooks using SWR (for redux replacement)
 
 # Next.js + Tailwind CSS Example
