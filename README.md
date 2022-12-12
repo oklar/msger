@@ -1,3 +1,12 @@
+✅ next js 13
+✅ tailwind css
+✅ upstash for serverless redis db
+✅ pusher to enable realtime messages with several clients
+✅ next auth w/ facebook login
+✅ typescript
+✅ nextjs server & client components
+✅ data fetching hooks using SWR (for redux replacement)
+
 # Next.js + Tailwind CSS Example
 
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
