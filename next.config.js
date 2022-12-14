@@ -11,6 +11,7 @@ module.exports = {
       "platform-lookaside.fbsbx.com",
       "scontent.fsvg2-1.fna.fbcdn.net",
       "cdn.discordapp.com",
+      
     ],
   },
   env: {
