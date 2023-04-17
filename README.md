@@ -2,15 +2,13 @@
 
 ✅ tailwind css
 
-✅ upstash for serverless redis db
+✅ upstash.com for serverless redis db
 
-✅ pusher to enable realtime messages with several clients
+✅ pusher.com to enable realtime messages with several clients
 
-✅ next auth w/ facebook login
+✅ next auth w/ discord login
 
 ✅ typescript
-
-✅ nextjs server & client components
 
 ✅ data fetching hooks using SWR (for redux replacement)
 
